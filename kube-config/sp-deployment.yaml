@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shinyproxy
+spec:
+  selector:
+    matchLabels:
+      run: shinyproxy
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: shinyproxy
+    spec:
+      containers:
+      - name: shinyproxy
+        image: gcr.io/sctk-xxx/shinyproxy:v2.3.1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+      - name: kube-proxy-sidecar
+        image: gcr.io/sctk-xxx/kube-proxy-sidecar:v0.1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8001

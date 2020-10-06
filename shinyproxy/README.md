@@ -1,0 +1,1 @@
+Authentication options are found on the [ShinyProxy website](https://www.shinyproxy.io/documentation/configuration/#authentication). In the current `application.yml` file users and passwords are hardcoded. When using this option, make sure the configuration is not made public.

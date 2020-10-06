@@ -1,0 +1,34 @@
+proxy:
+  title: Single Cell Toolkit Proxy
+  logo-url: https://www.bu.edu/cdn/images/logos/masterplate112x50.png
+  landing-page: /
+  heartbeat-rate: 10000
+  heartbeat-timeout: 60000
+  port: 8080
+  authentication: simple
+  admin-groups: admins
+  users:
+  - name: evan
+    password: Password1!
+    groups: admins
+  - name: josh
+    password: Password1!
+    groups: admins
+  - name: frederick
+    password: Password1!
+    groups: admins
+  container-backend: kubernetes
+  kubernetes:
+    internal-networking: true
+    url: http://localhost:8001
+  specs:
+  - id: sctk
+    display-name: Single Cell Toolkit
+    description: 
+    container-cmd: ["R", "-e", "shiny::runApp('/sctk/inst/shiny', port = 3838, host = '0.0.0.0')"]
+    container-image: gcr.io/sctk-284217/singlecelltk:v2.7.5
+    access-groups: [admins]
+
+logging:
+  file:
+    shinyproxy.log

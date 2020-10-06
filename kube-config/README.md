@@ -1,0 +1,1 @@
+This is a collection of configuration files for Kubernetes. Make sure you change the image names in `sp-deployment.yaml` to match your Google Cloud project ID (if relying on Google Cloud).
